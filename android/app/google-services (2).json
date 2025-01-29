@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "928846656433",
+    "firebase_url": "https://portfolio-d7669-default-rtdb.firebaseio.com",
+    "project_id": "portfolio-d7669",
+    "storage_bucket": "portfolio-d7669.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928846656433:android:0c58e183b0affa97fe4390",
+        "android_client_info": {
+          "package_name": "com.example.aryant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfNp7XqRUlk2dUpQjlGmkRO7s_XjirjB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

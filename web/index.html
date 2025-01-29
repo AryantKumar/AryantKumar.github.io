@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="Aryant Kumar" content="My Portfolio website made with Flutter 🍃🍒❤️">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Aryant Kumar (Mr.)">
+  <meta name="description" content="A passionate Android developer">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://metatags.io/">
+  <meta property="og:title" content="Aryant Kumar (Mr.)">
+  <meta property="og:description" content="A passionate Android developer">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://metatags.io/">
+  <meta property="twitter:title" content="Aryant Kumar (Mr.)">
+  <meta property="twitter:description" content="A passionate Android developer">
+  <meta property="twitter:image" content="">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="sirigem.png"/>
+
+  <title>Aryant! Portfolio</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script type="application/javascript">
+      function openLink(url, target, isAsync=false) {
+        var is_safari = /^(?!.*chrome).*safari/i.test(navigator.userAgent.toLowerCase());
+        if (is_safari && isAsync) {
+          window.location.href = url;
+        } else {
+          window.open(url, target);
+        }
+      }
+    </script>
+  <script>
+    var serviceWorkerVersion = null;
+  </script>
+  <script src="https://unpkg.com/canvaskit-wasm@0.37.1/bin/canvaskit.js"></script>
+  <link rel="preload" href="https://unpkg.com/canvaskit-wasm@0.37.1/bin/canvaskit.wasm" as="fetch" crossOrigin="anonymous">
+  <script src="flutter.js" defer></script>
+
+  <!-- Lottie player script -->
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
+  <style>
+    html{
+      background:#F4F4EF;
+    }
+    body{
+      display:flex;
+      align-items:center;
+      justify-content: center;
+    }
+    .loading{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+    }
+    .loading-label{
+      font-size: 18px;
+      font-weight: normal;
+      text-align: center;
+      font-style: normal;
+      font-color: black;
+      animation-name: changing;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease;
+    }
+
+    @keyframes changing{
+
+    }
+  </style>
+</head>
+<body>
+<div class="loading" id="loader">
+  <!-- Lottie animation loader -->
+  <dotlottie-player
+    src="https://lottie.host/528004d7-5b34-40b6-9985-347bef197d25/LaTCpEyv9Q.lottie"
+    background="transparent"
+    speed="1"
+    style="width: 200px; height: 200px"
+    loop
+    autoplay>
+  </dotlottie-player>
+  <p class="loading-label"></p>
+</div>
+  <script>
+        const texts = [
+        "Discovering new ways of making you wait...",
+        "Please wait while we ignore you...",
+        "Still faster than Windows update...",
+        "Kindly hold on until I finish a cup of coffee...",
+        "Don't panic, Just count to infinity...",
+      ];
+      const element = document.querySelector('p.loading-label');
+      let i=0;
+      const listener = e => {
+        i = i < texts.length - 1 ? i+1 : 0;
+        element.innerHTML  = texts[i];
+      };
+      element.innerHTML = texts[0];
+      element.addEventListener('animationiteration', listener, false);
+
+    window.addEventListener('load', function(ev) {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+              const loader = document.getElementById("loader");
+              loader.remove();
+              appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
