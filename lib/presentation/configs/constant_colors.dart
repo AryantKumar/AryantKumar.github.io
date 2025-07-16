@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:aryant/presentation/utils/extensions/extensions.dart';
 
 const Color kPrimary = Colors.white;
-final Color kSecondary = '#C7D3B6'.toColor();
+final Color kSecondary = '#D3B6B6'.toColor();
 final Color kPrimaryMedium = '#fdffa5'.toColor();
 final Color kCoffee = '#6f4e37'.toColor();
 const Color kTransparent = Colors.transparent;

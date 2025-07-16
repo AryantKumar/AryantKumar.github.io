@@ -46,6 +46,8 @@ flutter:
     - assets/images/personal/
     - assets/images/van_gogh/
     - assets/images/projects/
+    - assets/images/projects/social.png
+    - assets/images/projects/phonepe.png
     - assets/images/certificates/
     - assets/images/tools/
   fonts:

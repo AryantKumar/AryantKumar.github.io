@@ -20,13 +20,16 @@ class _CertificatesViewState extends State<CertificatesView>
   late AnimationController _stickController;
   final List<AnimationController> _controller = [];
   late AnimationController _textController;
+
   @override
   void initState() {
     super.initState();
     _stickController = AnimationController(vsync: this, duration: duration500)
       ..forward()
       ..addStatusListener(stickControllerListener);
+
     _textController = AnimationController(vsync: this, duration: duration1000);
+
     for (int i = 0; i < ksCertificateList.length; i++) {
       _controller.add(AnimationController(vsync: this, duration: duration500));
     }
@@ -40,8 +43,8 @@ class _CertificatesViewState extends State<CertificatesView>
 
   @override
   void dispose() {
-    for (var element in _controller) {
-      element.dispose();
+    for (var controller in _controller) {
+      controller.dispose();
     }
     _stickController.dispose();
     _textController.dispose();
@@ -52,6 +55,7 @@ class _CertificatesViewState extends State<CertificatesView>
   Widget build(BuildContext context) {
     return Wrapper(
       page: <Widget>[
+        // Header Section
         <Widget>[
           AnimatedHorizontalStick(controller: _stickController),
           horizontalSpaceMedium,
@@ -59,59 +63,75 @@ class _CertificatesViewState extends State<CertificatesView>
             controller: _textController,
             text: ksCertificates,
             textStyle: context.adaptive(
-              Theme.of(context).textTheme.bodyLarge,
-              Theme.of(context).textTheme.titleSmall,
+              Theme.of(context).textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+              Theme.of(context).textTheme.titleMedium,
             ),
             coverColor: kPrimary,
           ),
         ].addRow(),
+
+        verticalSpaceMassive,
+
+        // Certificate Grid
         GridView.custom(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: context.adaptive(1, 2),
             childAspectRatio: 16 / 9,
-            mainAxisSpacing: s10,
+            mainAxisSpacing: s20,
+            crossAxisSpacing: s20,
           ),
           childrenDelegate: SliverChildBuilderDelegate(
             childCount: ksCertificateList.length,
-            (context, index) => AnimationConfiguration.staggeredList(
+                (context, index) => AnimationConfiguration.staggeredGrid(
               position: index,
-              duration: duration2000,
+              columnCount: context.adaptive(1, 2),
+              duration: const Duration(milliseconds: 1500), // FIXED HERE
               child: SlideAnimation(
                 verticalOffset: s50,
-                curve: Curves.easeInOut,
+                curve: Curves.easeOutCubic,
                 child: FadeInAnimation(
-                  child: CertificateCard(
-                    key: ValueKey(index.toString()),
-                    animation: _controller[index],
-                    certificate: ksCertificateList[index],
-                    onHover: (isHovered) {
-                      if (isHovered) {
-                        _controller[index].forward();
-                      } else {
-                        if (!_controller[index].isDismissed) {
+                  child: Card( // FIXED HERE
+                    elevation: 6,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: CertificateCard(
+                      key: ValueKey(index.toString()),
+                      animation: _controller[index],
+                      certificate: ksCertificateList[index],
+                      onHover: (isHovered) {
+                        if (isHovered) {
+                          _controller[index].forward();
+                        } else if (!_controller[index].isDismissed) {
                           _controller[index].reverse();
                         }
-                      }
-                    },
+                      },
+                    ),
                   ),
                 ),
               ),
             ),
           ),
         ),
+
+        verticalSpaceLarge,
       ]
-          .addColumn()
+          .addColumn(
+        crossAxisAlignment: CrossAxisAlignment.start,
+      )
           .addPadding(
-            edgeInsets: context.symmetricPercentPadding(
-              hPercent: context.adaptive(s10, s8),
-              vPercent: context.adaptive(s14, s12),
-            ),
-          )
+        edgeInsets: context.symmetricPercentPadding(
+          hPercent: context.adaptive(s10, s8),
+          vPercent: context.adaptive(s12, s10),
+        ),
+      )
           .addScrollView(
-            physics: const BouncingScrollPhysics(),
-          ),
+        physics: const BouncingScrollPhysics(),
+      ),
     );
   }
 }

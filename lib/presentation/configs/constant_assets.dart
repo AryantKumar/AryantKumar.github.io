@@ -17,9 +17,12 @@ const String kaCoffee = "$basePath$mePath/coffee.svg";
 
 /// project images
 const String projectPath = "/projects";
-const String kaSrifmusic = "$basePath$projectPath/sirfmusic.png";
+const String kaSrifmusic = "$basePath$projectPath/social.png";
 const String kaLearnify = "$basePath$projectPath/learnify.png";
 const String kaSirigem = "$basePath$projectPath/sirigem.png";
+const String karepo = "$basePath$projectPath/social.png";
+const String kaphonepe = "$basePath$projectPath/phonepe.png";
+
 
 /// my tools
 const String toolsPath = "/tools";
@@ -45,12 +48,12 @@ const String kaPlayStore =
 /// van gogh artworks which are downloaded from https://wikiart.com
 const String vanGoghPath = "/van_gogh";
 
-const String kaStarryNight = "$basePath$vanGoghPath/the-starry-night.jpg";
-const String kaIrises = "$basePath$vanGoghPath/irises.jpg";
-const String kaBlossom = "$basePath$vanGoghPath/blossom.jpg";
-const String kaHarvest = "$basePath$vanGoghPath/the-harvest.jpg";
-const String kaPotatoEaters = "$basePath$vanGoghPath/the-potato-eaters.jpg";
-const String kaCypress = "$basePath$vanGoghPath/wheat-field-with-cypresses.jpg";
+const String kaStarryNight = "$basePath$vanGoghPath/1352159.png";
+const String kaIrises = "$basePath$vanGoghPath/1352155.png";
+const String kaBlossom = "$basePath$vanGoghPath/1351657.png";
+const String kaHarvest = "$basePath$vanGoghPath/606129.jpg";
+const String kaPotatoEaters = "$basePath$vanGoghPath/1066409.jpg";
+const String kaCypress = "$basePath$vanGoghPath/spidy.jpg";
 
 const kaMenu = [
   kaStarryNight,

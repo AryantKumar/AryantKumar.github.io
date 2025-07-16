@@ -73,11 +73,14 @@ const String ksSpecialization =
 const String ksWhoAmI = 'Who Am I?';
 const String ksWhatILove = "What I Love To Do";
 const String ksBriefAboutMe =
-    "I am a Computer Science Engineering student with a keen interest in Full Stack Application Development. Currently, I am expanding my expertise by learning iOS development and exploring the integration of AI and emerging technologies into modern applications. I am passionate about delivering innovative, high-quality solutions and actively contribute to impactful projects..";
+    "I am a recent Computer Science Engineering graduate with a strong passion for Full Stack Application Development. I'm currently expanding my skills in iOS development and exploring how AI and emerging technologies can be integrated into modern applications. I thrive on delivering high-quality, innovative solutions and actively contribute to impactful projects.";
+
 const String ksMyLife =
-    "I am a final-year Computer Science Engineering student from Bengal College of Engineering and Technology, Durgapur, Indin.";
+    "I recently graduated with a degree in Computer Science Engineering from Bengal College of Engineering and Technology, Durgapur, India.";
+
 const String ksProfession =
-    "I started working as a Android App Developer since 2022. Later, I fell in love with it. I'm eager to contribute in App Developer community. Recently, I've started learning about iOS developmet and app development with AI";
+    "I began my journey as an Android App Developer in 2022 and quickly fell in love with it. I'm passionate about contributing to the developer community. Recently, I've also started learning iOS development and exploring the intersection of mobile apps and AI-driven technology.";
+
 
 const String ksMyTools =
     "I use a bunch of tools and technologies to make design and implementation process easier. ";
@@ -99,6 +102,7 @@ final List<String> ksOtherTech = [
   'MongoDB',
   'SQL',
   'Python',
+  'Room Database',
 ];
 
 const String ksCoding = "Full Stack App Developer";
@@ -140,10 +144,10 @@ final List<Activity> ksActivityList = [
   Activity(
     title: ksActivities,
     name:
-        "Music App ",
+        "RepoSphere",
     icon: kiActivity,
     details:
-        "This is a five-week Exchange Program with Singapore Polytechnic ( 3-weeks in Singapore and 2-weeks in Myanmar Learnt data analytics, design thinking and co-operation skills and applied them on the Coffee Farm ProjectSrif Music is an Android app designed to provide an enhanced music listening experience. It integrates YouTube for streaming music and Musixmatch for displaying lyrics in real-time, offering users a seamless combination of audio and lyrics while they enjoy their favorite songs",
+        "RepoSphere is an advanced Android app that lets users explore, search, and analyze GitHub repositories. It features GitHub OAuth login for personalized access, Retrofit and Kotlin Coroutines for smooth API integration, and a clean UI to showcase repository details, contributors, and statistics. Ideal for developers, students, and open-source enthusiasts.",
   ),
   Activity(
     name:
@@ -312,15 +316,15 @@ const String _MAC = 'MacOs';
 const String _WEB = 'Web';
 final List<ShowcaseProject> ksShowcaseProjects = [
   ShowcaseProject(
-    title: 'Music App SrifMusic',
+    title: 'RepoSphere',
     image: kaSrifmusic,
     shortDescription:
-        "Srif Music is an Android app that combines YouTube streaming and Musixmatch lyrics for an immersive music experience.",
+        "RepoSphere is an Android app that combines GitHub API integration and OAuth authentication to explore repositories, contributors, and stats—offering developers a seamless GitHub browsing experience.",
     description: """
-       Srif Music is an Android app that enhances the music experience with the following features::
-          - YouTube music streaming integration
-          - Real-time lyrics display from Musixmatch
-          - Seamless user interface built with Jetpack Compose
+       RepoSphere is an Android app that enhances the GitHub exploring experience with the following features:
+          - GitHub OAuth authentication for secure, personalized access
+          - Repository search and analytics via GitHub API
+          -Clean, responsive UI built with Jetpack Compose and Material Design
         """,
     link: ProjectInfo(
       icon: kiLink,
@@ -330,7 +334,7 @@ final List<ShowcaseProject> ksShowcaseProjects = [
         "https://github.com/AryantKumar",
       ],
     ),
-    heroTag: 'SrifMusic',
+    heroTag: 'Reposphere',
     tags: ProjectInfo(
       icon: kiTag,
       label: 'Tags',
@@ -339,7 +343,7 @@ final List<ShowcaseProject> ksShowcaseProjects = [
         'package',
         _ANDROID.toLowerCase(),
         _KOTLIN.toLowerCase(),
-        'Can see lyrics',
+        'Secure GitHub OAuth login for personalized access',
       ],
     ),
     tech: ProjectInfo(
@@ -369,7 +373,7 @@ final List<ShowcaseProject> ksShowcaseProjects = [
     image: kaLearnify,
     shortDescription: "Learnify is a programing language learning app",
     description: """
-        Notee is a personal management app that includes four parts :
+       Learnify Is  programing Lanuage Learning App. Here, I provide you with things:
           -Programming Lessons: Provides lessons in various programming languages.
           -Real-time Code Editor: Allows users to write and test code in real-time.
           -Quizzes: Includes quizzes to assess and enhance learning.
@@ -382,7 +386,7 @@ final List<ShowcaseProject> ksShowcaseProjects = [
         contents: [
           "https://github.com/AryantKumar",
         ]),
-    heroTag: 'notee',
+    heroTag: 'Learnify',
     tags: ProjectInfo(
       icon: kiTag,
       label: 'Tags',
@@ -418,19 +422,19 @@ final List<ShowcaseProject> ksShowcaseProjects = [
     ),
   ),
   ShowcaseProject(
-    title: 'Sirigem - An AI debugger for Android Studio and Xcode(Prototype)',
-    image: kaSirigem,
+    title: 'PhonePe Secure- Secure UPI Transactions Prototype with Biometric & AI Fraud Detection',
+    image: kaphonepe,
     shortDescription:
-        "SiriGem is an AI-powered debugger designed to assist developers by automatically detecting and fixing errors in Xcode and Android Studio, enhancing coding efficiency and reducing troubleshooting time.",
+        "PhonePe Secure is a security-focused UPI payment prototype designed to enhance transaction safety using biometric authentication and AI-driven fraud detection, providing users with a more secure and reliable digital payment experience.",
     description: """
-        Here, I provide you with things:
-          1. Real-time Error Detection
-          2. Automated Bug Fix Suggestions
-          3. Code Completion and Autofix
-          4. Context-Aware Debugging
-          5. Performance Optimization
-          6. Cross-Platform Debugging
-          7. Code Linting & Version Control Integration 
+       A Prototype UPI Payment App with Biometric & AI-Driven Fraud Protection.  Key Features:
+          1. Biometric & PIN Authentication – Secure login and transaction access
+          2. AI-Based Fraud Detection – Monitors behavior and flags suspicious activity in real time
+          3. Transaction Encryption – End-to-end data protection during payments
+          4. Spending Insights Dashboard – Visualize and manage your expenses securely
+          5. Suspicious Transaction Alerts – Instant alerts to prevent unauthorized access
+          6. Transaction History Log – Easily track all payment activity
+          7. Modern UI with Jetpack Compose – Sleek and intuitive user experience
         """,
     link: ProjectInfo(
       icon: kiLink,
@@ -440,13 +444,13 @@ final List<ShowcaseProject> ksShowcaseProjects = [
         "https://github.com/AryantKumar",
       ],
     ),
-    heroTag: 'Sirigem',
+    heroTag: 'PhonepeSecure',
     tags: ProjectInfo(
       icon: kiTag,
       label: 'Tags',
       isTag: true,
       contents: [
-        'debugging',
+        'Transaction Security',
         _ANDROID.toLowerCase(),
         _IOS.toLowerCase(),
       ],
@@ -457,7 +461,6 @@ final List<ShowcaseProject> ksShowcaseProjects = [
       contents: [
         _KOTLIN.toUpperCase(),
         _ANDROID.toUpperCase(),
-        'Swift',
       ],
     ),
     author: ProjectInfo(
@@ -472,7 +475,6 @@ final List<ShowcaseProject> ksShowcaseProjects = [
       label: 'Available Platforms',
       contents: [
         _ANDROID,
-        _IOS,
       ],
     ),
   ),

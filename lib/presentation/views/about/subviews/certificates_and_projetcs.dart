@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:aryant/data/model/activity.dart';
-import 'package:aryant/presentation/route/route_transitions.dart';
 import 'package:aryant/presentation/utils/extensions/extensions.dart';
 import 'package:aryant/presentation/widgets/widgets.dart';
 
@@ -13,128 +12,119 @@ class CertificatesAndProjetcs extends StatelessWidget {
     required this.textController,
     required this.infoController,
   });
+
   final AnimationController stickController;
   final AnimationController textController;
   final AnimationController infoController;
+
   @override
   Widget build(BuildContext context) {
     return <Widget>[
       <Widget>[
-        AnimatedHorizontalStick(
-          controller: stickController,
-        ),
+        AnimatedHorizontalStick(controller: stickController),
         horizontalSpaceMedium,
         AnimatedTextSlideBoxTransition(
           text: ksCertificateAndProjetcs.toUpperCase(),
           controller: textController,
           coverColor: kPrimary,
           textStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ].addRow(),
       verticalSpaceMassive,
-      SlideWidget(
-        <Widget>[
-          ...ksActivityList
-              .map(
-                (activity) => ActivityContainer(
-                  activity: activity,
-                ),
-              )
-              .toList(),
-        ].addColumn(
-          mainAxisSize: MainAxisSize.min,
+      ...ksActivityList
+          .map((activity) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: FadeTransition(
+          opacity: infoController,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 0.1),
+              end: Offset.zero,
+            ).animate(CurvedAnimation(
+              parent: infoController,
+              curve: Curves.easeOut,
+            )),
+            child: ActivityCard(activity: activity),
+          ),
         ),
-        animation: infoController,
-        slidePosition: SlidePosition.bottom,
-      ),
+      ))
+          .toList(),
     ].addColumn(
       crossAxisAlignment: CrossAxisAlignment.start,
     );
   }
 }
 
-class ActivityContainer extends StatelessWidget {
-  const ActivityContainer({
-    super.key,
-    required this.activity,
-  });
+class ActivityCard extends StatelessWidget {
+  const ActivityCard({super.key, required this.activity});
+
   final Activity activity;
+
   @override
   Widget build(BuildContext context) {
-    return <Widget>[
-      activity.title != null
-          ? Text(
-              activity.title!,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-            )
-          : noSpace,
-      activity.title != null ? verticalSpaceMedium : noSpace,
-      <Widget>[
-        <Widget>[
-          Icon(activity.icon,size: context.adaptive(s18, s24),),
-          horizontalSpaceMedium,
-          Text(
-            activity.name,
-            maxLines: 3,
-            style: context
-                .adaptive(Theme.of(context).textTheme.bodyMedium,
-                    Theme.of(context).textTheme.bodyLarge)
-                ?.copyWith(
-                  fontWeight: FontWeight.w300,
-                ),
+    return Container(
+      decoration: BoxDecoration(
+        color: kWhite,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: kBlack12,
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
-        ].addWrap(
-        ),
-        link(context),
-      ].addWrap(
-        alignment: activity.link == null
-            ? WrapAlignment.start
-            : WrapAlignment.spaceBetween,
+        ],
       ),
-      verticalSpaceSmall,
-      Text(activity.details).addPadding(
-        edgeInsets: context.percentPadding(
-          l: s3,
-          b: s3,
-        ),
-      ),
-    ]
-        .addColumn(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-        )
-        .addPadding(
-          edgeInsets: context.symmetricPercentPadding(hPercent: s8),
-        );
-  }
-
-  Widget link(BuildContext context) {
-    if (activity.link != null) {
-      return <Widget>[
-        Icon(kiLink,size: context.adaptive(s14,s24),),
-        horizontalSpaceMedium,
-        GestureDetector(
-          onTap: () {
-            activity.link!.launchWebsite();
-          },
-          child: Text(
-            activity.link!,
-            style: const TextStyle(
-              decoration: TextDecoration.underline,
-              decorationStyle: TextDecorationStyle.dotted,
-              decorationColor: kBlack26,
+      padding: const EdgeInsets.all(16),
+      child: <Widget>[
+        if (activity.title != null) ...[
+          Text(
+            activity.title!,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w600,
             ),
           ),
+          verticalSpaceSmall,
+        ],
+        <Widget>[
+          Icon(activity.icon, size: context.adaptive(s18, s24)),
+          horizontalSpaceMedium,
+          Expanded(
+            child: Text(
+              activity.name,
+              maxLines: 3,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+        ].addRow(),
+        verticalSpaceSmall,
+        if (activity.link != null) ...[
+          const Divider(height: 24),
+          InkWell(
+            onTap: () => activity.link!.launchWebsite(),
+            child: <Widget>[
+              const Icon(kiLink, size: 18),
+              horizontalSpaceSmall,
+              Text(
+                activity.link!,
+                style: const TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationStyle: TextDecorationStyle.dotted,
+                  color: Colors.blue,
+                ),
+              ),
+            ].addRow(),
+          ),
+        ],
+        verticalSpaceMedium,
+        Text(
+          activity.details,
+          style: Theme.of(context).textTheme.bodySmall,
         ),
-      ].addRow(
-        mainAxisSize: MainAxisSize.min,
-      );
-    } else {
-      return noSpace;
-    }
+      ].addColumn(crossAxisAlignment: CrossAxisAlignment.start),
+    );
   }
 }
