@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_web_plugins/url_strategy.dart'; // ✅ Use Flutter's built-in support
 import 'package:layout/layout.dart';
-import 'package:url_strategy/url_strategy.dart';
 import 'package:aryant/injection.dart';
 import 'package:aryant/presentation/utils/extensions/extensions.dart';
 
@@ -19,7 +19,7 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
   Injection.setUp();
-  setPathUrlStrategy();
+  usePathUrlStrategy(); // ✅ Replaces setPathUrlStrategy from url_strategy package
   runApp(const TucoYe());
 }
 
